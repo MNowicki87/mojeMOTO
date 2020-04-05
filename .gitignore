@@ -124,3 +124,9 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+src/main/
+src/test/
+target/Servlets/WEB-INF/
+target/generated-sources/
+src/webapp/jsp/WEB-INF/classes/com/sda/day1/
+src/webapp/jsp/WEB-INF/classes/com/sda/day2/
