@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Our person!</h1>
+    <h1>Our person!</h1
     <h2>${person.firstName}</h2>
     <h2>${person.lastName}</h2>
     <h2>${person.age}</h2>
