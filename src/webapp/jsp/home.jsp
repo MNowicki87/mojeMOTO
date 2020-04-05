@@ -1,14 +1,5 @@
-<%@ page import="java.time.LocalDateTime" %>
-<%@ page language="java" contentType="text/html" %>
-
-<html>
-<head>
-    <title>Home page</title>
-</head>
-
-<body>
-<h1>${sessionScope.name}</h1>
-
-</body>
-
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="header.jsp"/>
+<div class="container">
+</div>
+<jsp:include page="footer.jsp"/>
