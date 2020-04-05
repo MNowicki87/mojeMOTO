@@ -1,26 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html" %>
 
-<!doctype html>
-<html lang="pl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car registration service</title>
+    <title>City page</title>
 </head>
+
 <body>
-
-<h1>Car:</h1>
-
-<h2>marka: ${car.make}</h2>
-<h2>model: ${car.model}</h2>
-<h2>kraj: ${car.country}</h2>
-<h2>rok prod.: ${car.year}</h2>
-<h2>przebieg: ${car.mileage}</h2>
-<h2>silnik: ${car.engine}</h2>
+<h1> Car: </h1>
+<h2>Company : ${car.company}</h2>
+<h2>Model : ${car.model}</h2>
+<h2>Country : ${car.country}</h2>
+<h2>Year : ${car.year}</h2>
+<h2>Engine : ${car.engine}</h2>
+<h2>Mileage : ${car.mileage}</h2>
 
 <a href="/home">Next</a>
 
 </body>
-</html>

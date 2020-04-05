@@ -6,11 +6,12 @@ import lombok.Value;
 @Value
 @Builder
 public class Car {
-   String make;
-   String model;
-   String country;
-   String engine;
-   int year;
-   int mileage;
-   
+
+  private String company;
+  private String model;
+  private Integer mileage;
+  private Integer engine;
+  private Integer year;
+  private String country;
+
 }

@@ -1,38 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html" %>
 
-<!doctype html>
-<html lang="pl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car registration service</title>
+    <title>City page</title>
 </head>
+
 <body>
+<h1> Car form </h1>
 
-    <h1>Register a car</h1>
+<form method="post" action="/car">
+    <p>Choose a company !</p>
+    <input type="text" name="company">
+    <p>Choose a model !</p>
+    <input type="text" name="model">
+    <p>Choose a year !</p>
+    <input type="text" name="year">
+    <p>Choose an engine !</p>
+    <input type="number" name="engine">
+    <p>Choose a mileage !</p>
+    <input type="number" name="mileage">
+    <p>Choose a country !</p>
+    <input type="text" name="country">
 
-    <form method="post" action="car.jsp">
-        <label>Marka</label>
-        <input type="text" id="make" name="make"><br>
-
-        <label>Model</label>
-        <input type="text" name="model"><br>
-
-        <label>Silnik</label>
-        <input type="text" name="engine"><br>
-
-        <label>Kraj</label>
-        <input type="text" name="country"><br>
-
-        <label>Rok</label>
-        <input type="text" name="year"><br>
-
-        <label>Przebieg</label>
-        <input type="text" name="mileage"><br>
-        <input type="submit">
-    </form>
-
+    <br><br>
+    <input type="submit">
+</form>
 </body>
-</html>
