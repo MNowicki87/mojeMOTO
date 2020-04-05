@@ -23,7 +23,7 @@
         <label>Silnik</label>
         <input type="text" name="engine"><br>
 
-        <label>Silnik</label>
+        <label>Kraj</label>
         <input type="text" name="country"><br>
 
         <label>Rok</label>
