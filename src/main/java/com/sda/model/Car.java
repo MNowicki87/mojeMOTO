@@ -1,15 +1,13 @@
 package com.sda.model;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
-@Value
+@Data
 @Builder
 public class Car {
    String make;
    String model;
    int mileage;
    int year;
+   String imageLink;
 }

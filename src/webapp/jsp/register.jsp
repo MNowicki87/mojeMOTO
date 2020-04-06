@@ -6,25 +6,33 @@
     Login : ${requestScope.loginExists} already exists in system!
 </c:if>
 
-<div class="container">
-    <form action="/register" method="post">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text"  id="name" class="form-control" placeholder="Enter name" name="name">
-        </div>
-        <div class="form-group">
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" class="form-control" placeholder="Enter surname" name="surname">
-        </div>
-        <div class="form-group">
-            <label for="login">Login:</label>
-            <input type="text" class="form-control" id="login" placeholder="Enter login" name="login">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-</div>
+<div class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"
+             style="background-image: url(&quot;http://www.banktapet.pl/pictures/2016/0716/1/classic-kool-nice-car-pics-583905.jpg&quot;);background-position: center;"></div>
+        <form action="/register" method="post">
+            <h2 class="text-center"><strong>Utwórz konto</strong></h2>
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" required placeholder="Imię"
+                       minlength="2">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="surname" placeholder="Nazwisko">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="login" required="" placeholder="Login"
+                                           minlength="4">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="pwd" required=""
+                                           placeholder="Hasło" minlength="2">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">
+                    Zarejestruj
+                </button>
+            </div>
+            <a href="/login" class="already">Masz już konto? Zaloguj się turaj.</a></form>
+        </form>
+    </div>
 <jsp:include page="footer.jsp"/>

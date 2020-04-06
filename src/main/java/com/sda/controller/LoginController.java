@@ -14,7 +14,7 @@ import java.util.Optional;
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
    
-   private final UserService userService = UserService.aUserService();
+   private final UserService userService = UserService.getInstance();
    
    @Override
    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {

@@ -1,13 +1,21 @@
 <jsp:include page="header.jsp"/>
-<form action="/login" method="post">
-    <div class="form-group">
-        <label for="login">login:</label>
-        <input type="text" class="form-control" placeholder="login" id="login" name="login">
+
+
+<div class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"
+             style="background-image: url(&quot;http://www.banktapet.pl/pictures/2016/0716/1/classic-kool-nice-car-pics-583905.jpg&quot;);background-position: center;"></div>
+        <form action="/login" method="post">
+            <h2 class="text-center"><strong>Zaloguj się</strong></h2>
+            <div class="form-group"><input class="form-control" type="text" name="login" required
+                                           placeholder="Login" minlength="4"></div>
+            <div class="form-group"><input class="form-control" type="password" name="pwd" required
+                                           placeholder="Hasło" minlength="2"></div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Zaloguj</button>
+            </div>
+            <a href="/register" class="already">Nie masz konta? Zarejestruj się turaj.</a>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
 <jsp:include page="footer.jsp"/>

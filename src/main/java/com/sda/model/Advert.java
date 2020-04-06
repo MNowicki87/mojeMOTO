@@ -1,11 +1,11 @@
 package com.sda.model;
 
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Value
+@Data
 @Builder
 public class Advert {
    boolean isActive;
