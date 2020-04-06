@@ -295,7 +295,7 @@
 
         .jumbo-inner-box {
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 40px 249px;
+            padding: 40px 6vw;
             color: #fff;
         }
 

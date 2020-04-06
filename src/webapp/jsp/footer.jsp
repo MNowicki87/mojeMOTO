@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="footer-basic">
     <footer>
         <div class="social">
@@ -8,12 +9,14 @@
         </div>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="/home">Strona główna</a></li>
-            <li class="list-inline-item"><a href="/list">Ogłoszenia</a></li>
-            <li class="list-inline-item"><a href="/myads">Moje ogłoszenia</a></li>
+            <c:if test="${sessionScope.user != null}">
+                <li class="list-inline-item"><a href="/list">Ogłoszenia</a></li>
+                <li class="list-inline-item"><a href="/myads">Moje ogłoszenia</a></li>
+            </c:if>
             <li class="list-inline-item"><a href="/home">Regulamin</a></li>
             <li class="list-inline-item"><a href="/home">Polityka prywatności</a></li>
         </ul>
-        <p class="copyright">otoMOTO © 2020</p>
+        <p class="copyright">mojeMOTO © 2020</p>
     </footer>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
