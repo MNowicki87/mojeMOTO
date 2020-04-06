@@ -85,7 +85,7 @@ public class SetUpController extends HttpServlet {
             .car(bimmer)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("jkow", PWD).get())
+            .owner(userService.getUserByLogin(USR2, PWD).get())
             .price(60000)
             .build();
       advertService.addListing(ad3);
@@ -117,7 +117,7 @@ public class SetUpController extends HttpServlet {
             .car(volvo)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("jkow", PWD).get())
+            .owner(userService.getUserByLogin(USR2, PWD).get())
             .price(230000)
             .build();
       advertService.addListing(ad5);
@@ -150,7 +150,7 @@ public class SetUpController extends HttpServlet {
       final User jkow = User.builder()
             .name("Jan")
             .surname("Kowalski")
-            .login("jkow")
+            .login(USR2)
             .password(PWD)
             .build();
       
