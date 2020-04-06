@@ -1,0 +1,15 @@
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/repository/AdvertRepository.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/HomePageController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/LoginController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/RegisterController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/AdvertsByUserController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/model/User.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/repository/UserRepository.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/model/Car.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/model/Advert.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/service/UserService.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/AdvertListController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/service/AdvertService.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/SetUpController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/AdvertAddController.java
+/Users/michalnowicki/IdeaProjects/servlets/src/main/java/com/sda/controller/LogoutController.java
