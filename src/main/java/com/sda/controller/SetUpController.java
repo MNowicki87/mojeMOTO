@@ -17,6 +17,10 @@ import java.time.LocalDateTime;
 @WebServlet(name = "SetUpController", value = "/setup")
 public class SetUpController extends HttpServlet {
    
+   public static final String USR1 = "usr1";
+   public static final String USR2 = "usr2";
+   public static final String PWD = "pwd";
+   
    @Override
    protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
       setUp();
@@ -27,8 +31,14 @@ public class SetUpController extends HttpServlet {
    private final AdvertService advertService = AdvertService.getInstance();
    
    private void setUp() {
+      removeAllData();
       populateUsers();
       addListings();
+   }
+   
+   private void removeAllData() {
+      advertService.depopulateData();
+      userService.depopulateData();
    }
    
    private void addListings() {
@@ -43,7 +53,7 @@ public class SetUpController extends HttpServlet {
             .car(mazda)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("mnow", "asdf").get())
+            .owner(userService.getUserByLogin(USR1, PWD).get())
             .price(3200)
             .build();
       advertService.addListing(ad1);
@@ -59,7 +69,7 @@ public class SetUpController extends HttpServlet {
             .car(merc)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("jkow", "asdf").get())
+            .owner(userService.getUserByLogin(USR2, PWD).get())
             .price(22900)
             .build();
       advertService.addListing(ad2);
@@ -75,7 +85,7 @@ public class SetUpController extends HttpServlet {
             .car(bimmer)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("jkow", "asdf").get())
+            .owner(userService.getUserByLogin("jkow", PWD).get())
             .price(60000)
             .build();
       advertService.addListing(ad3);
@@ -91,7 +101,7 @@ public class SetUpController extends HttpServlet {
             .car(audi)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("mnow", "asdf").get())
+            .owner(userService.getUserByLogin(USR1, PWD).get())
             .price(28900)
             .build();
       advertService.addListing(ad4);
@@ -107,7 +117,7 @@ public class SetUpController extends HttpServlet {
             .car(volvo)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("jkow", "asdf").get())
+            .owner(userService.getUserByLogin("jkow", PWD).get())
             .price(230000)
             .build();
       advertService.addListing(ad5);
@@ -123,7 +133,7 @@ public class SetUpController extends HttpServlet {
             .car(seggy)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin("mnow", "asdf").get())
+            .owner(userService.getUserByLogin(USR1, PWD).get())
             .price(18_000_000)
             .build();
       advertService.addListing(ad6);
@@ -133,15 +143,15 @@ public class SetUpController extends HttpServlet {
       final User mnow = User.builder()
             .name("Michał")
             .surname("Nowicki")
-            .login("mnow")
-            .password("asdf")
+            .login(USR1)
+            .password(PWD)
             .build();
    
       final User jkow = User.builder()
             .name("Jan")
             .surname("Kowalski")
             .login("jkow")
-            .password("asdf")
+            .password(PWD)
             .build();
       
       userService.registerUser(mnow);

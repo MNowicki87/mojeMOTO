@@ -29,4 +29,7 @@ public class UserService {
       return userRepository.findUserByEmailAndPassword(login, pwd);
    }
    
+   public void depopulateData() {
+      userRepository.depopulataData();
+   }
 }

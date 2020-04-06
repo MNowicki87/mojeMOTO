@@ -1,15 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
-<div class="jumbotron text-left"
-     style="background-image: url(https://static3.hotcarsimages.com/wordpress/wp-content/uploads/2020/04/The-grand-tour-intro-1.jpg?q=50&amp;fit=crop&amp;w=740&amp;h=416);background-size: cover;background-position: center;">
-    <h1>Szukasz samochodu?</h1>
-    <p class="shadow-lg"
-       style="background-color: rgba(0,0,0,0.7);margin: 0px;padding: 25px;padding-left: 10;color: rgb(255,255,255);margin-bottom: 27px;margin-top: 21px;">
-        Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget
-        quam.</p>
-    <p class="text-center" style="font-weight: bold;font-style: normal;font-family: Raleway, sans-serif;"><a
-            class="btn btn-outline-primary btn-lg text-white bg-primary border rounded shadow-lg" role="button" href="/list"
-            style="opacity: 1;filter: blur(0px);font-family: Raleway, sans-serif;font-weight: bold;">Przeglądaj
-        ogłoszenia</a></p>
+<div class="jumbotron text-left">
+    <div class="col-9 m-auto jumbo-inner-box">
+        <h1 class="text-center">Szukasz samochodu?</h1>
+        <h3 class="text-center">
+            Twoje nowe auto już na Ciebie czeka <br>
+            <span class="small">na<br></span>
+            <span class="text-primary">mojeMOTO!</span>
+        </h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, amet, quibusdam dolorem fuga quo minima illo
+            architecto provident laborum temporibus vero cupiditate labore enim error odio facere minus quidem
+            dignissimos reprehenderit nemo! Consectetur quibusdam cumque doloribus. Tempora, quod dignissimos unde
+            perspiciatis accusantium ad corrupti molestias eveniet veritatis suscipit. Deserunt, facere.
+        </p>
+        <p class="text-center" style="font-weight: bold;font-style: normal;font-family: Raleway, sans-serif;">
+            <a class="btn btn-outline-primary btn-lg text-white bg-primary border rounded shadow-lg heartBeat"
+               role="button" href="/list"
+               style="opacity: 1;filter: blur(0px);font-family: Raleway, sans-serif;font-weight: bold;">
+                Przeglądaj ogłoszenia
+            </a>
+        </p>
+    </div>
 </div>
 <jsp:include page="footer.jsp"/>

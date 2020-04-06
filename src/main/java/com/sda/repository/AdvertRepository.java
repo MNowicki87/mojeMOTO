@@ -39,4 +39,7 @@ public class AdvertRepository {
    }
    
    
+   public void drop() {
+      adverts.clear();
+   }
 }

@@ -11,6 +11,10 @@
     <title>mojeMOTO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <style>
         .footer-basic {
@@ -104,7 +108,8 @@
             border-color: #ddd;
         }
 
-        .navigation-clean-button .navbar-toggler:hover, .navigation-clean-button .navbar-toggler:focus {
+        .navigation-clean-button .navbar-toggler:hover,
+        .navigation-clean-button .navbar-toggler:focus {
             background: none;
         }
 
@@ -112,16 +117,20 @@
             color: #888;
         }
 
-        .navigation-clean-button .navbar-collapse, .navigation-clean-button .form-inline {
+        .navigation-clean-button .navbar-collapse,
+        .navigation-clean-button .form-inline {
             border-top-color: #ddd;
         }
 
-        .navigation-clean-button .navbar-nav a.active, .navigation-clean-button .navbar-nav > .show > a {
+        .navigation-clean-button .navbar-nav a.active,
+        .navigation-clean-button .navbar-nav > .show > a {
             background: none;
             box-shadow: none;
         }
 
-        .navigation-clean-button.navbar-light .navbar-nav a.active, .navigation-clean-button.navbar-light .navbar-nav a.active:focus, .navigation-clean-button.navbar-light .navbar-nav a.active:hover {
+        .navigation-clean-button.navbar-light .navbar-nav a.active,
+        .navigation-clean-button.navbar-light .navbar-nav a.active:focus,
+        .navigation-clean-button.navbar-light .navbar-nav a.active:hover {
             color: #8f8f8f;
             box-shadow: none;
             background: none;
@@ -137,7 +146,8 @@
             color: #465765;
         }
 
-        .navigation-clean-button.navbar-light .navbar-nav .nav-link:focus, .navigation-clean-button.navbar-light .navbar-nav .nav-link:hover {
+        .navigation-clean-button.navbar-light .navbar-nav .nav-link:focus,
+        .navigation-clean-button.navbar-light .navbar-nav .nav-link:hover {
             color: #37434d !important;
             background-color: transparent;
         }
@@ -149,13 +159,15 @@
             border-radius: 2px;
         }
 
-        .navigation-clean-button .dropdown-menu .dropdown-item:focus, .navigation-clean-button .dropdown-menu .dropdown-item {
+        .navigation-clean-button .dropdown-menu .dropdown-item:focus,
+        .navigation-clean-button .dropdown-menu .dropdown-item {
             line-height: 2;
             font-size: 14px;
             color: #37434d;
         }
 
-        .navigation-clean-button .dropdown-menu .dropdown-item:focus, .navigation-clean-button .dropdown-menu .dropdown-item:hover {
+        .navigation-clean-button .dropdown-menu .dropdown-item:focus,
+        .navigation-clean-button .dropdown-menu .dropdown-item:hover {
             background: #eee;
             color: inherit;
         }
@@ -166,7 +178,9 @@
             color: #465765;
         }
 
-        .navigation-clean-button .navbar-text .action-button, .navigation-clean-button .navbar-text .action-button:active, .navigation-clean-button .navbar-text .action-button:hover {
+        .navigation-clean-button .navbar-text .action-button,
+        .navigation-clean-button .navbar-text .action-button:active,
+        .navigation-clean-button .navbar-text .action-button:hover {
             background: #56c6c6;
             border-radius: 20px;
             font-size: inherit;
@@ -273,6 +287,35 @@
             background: #66d7d7;
         }
 
+        .jumbotron {
+            background-image: url(https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .jumbo-inner-box {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px 249px;
+            color: #fff;
+        }
+
+        .jumbo-inner-box p {
+            margin-bottom: 3rem;
+        }
+
+        .card-body {
+            padding: 0;
+        }
+
+        .card-body .d-block,
+        .card-body .d-flex {
+            padding: 0 10px;
+        }
+
+        .card-img-top {
+            margin-bottom: 15px;
+        }
+
     </style>
 </head>
 
@@ -285,25 +328,25 @@
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <c:if test="${sessionScope.user != null}">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="/list">Ogłoszenia</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                           aria-expanded="false" href="/myads">
-                            Moje ogłoszenia
-                        </a>
-                        <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item" role="presentation" href="/myads">
-                                Pokaż moje ogłoszenia
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="/list">Ogłoszenia</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown"
+                               aria-expanded="false" href="/myads">
+                                Moje ogłoszenia
                             </a>
-                            <a class="dropdown-item" role="presentation" href="/add">
-                                Dodaj nowe ogłoszenie
-                            </a>
-                        </div>
-                    </li>
-                </ul>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="/myads">
+                                    Pokaż moje ogłoszenia
+                                </a>
+                                <a class="dropdown-item" role="presentation" href="/add">
+                                    Dodaj nowe ogłoszenie
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
                 </c:if>
                 <c:if test="${sessionScope.user == null}">
                 <span class="navbar-text actions ml-auto">

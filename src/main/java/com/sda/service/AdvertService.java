@@ -31,4 +31,8 @@ public class AdvertService {
    public boolean addListing(final Advert ad) {
       return advertRepository.addAdvert(ad);
    }
+   
+   public void depopulateData() {
+      advertRepository.drop();
+   }
 }

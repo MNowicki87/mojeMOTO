@@ -40,5 +40,8 @@ public class UserRepository {
             .filter(u->u.getPassword().equals(password)).findFirst();
    }
    
+   public void depopulataData() {
+      users.clear();
+   }
 }
 
