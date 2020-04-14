@@ -5,6 +5,7 @@ import com.sda.model.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,5 +42,30 @@ public class AdvertRepository {
    
    public void drop() {
       adverts.clear();
+   }
+   
+   public List<Advert> getFiltered(final Integer minMileage, final Integer maxMileage,
+                                   final Integer minYear, final Integer maxYear,
+                                   final Integer minPrice, final Integer maxPrice) {
+      
+      return adverts.parallelStream()
+            .filter(ad -> ad.getCar().getMileage() >= minMileage
+                  && ad.getCar().getMileage() <= maxMileage)
+            .filter(ad -> ad.getCar().getYear() >= minYear
+                  && ad.getCar().getYear() <= maxYear)
+            .filter(ad -> ad.getPrice() >=minPrice
+            && ad.getPrice() <= maxPrice)
+            .collect(Collectors.toList());
+   }
+   
+   public List<Advert> getFiltered(final String make,
+                                   final Integer minMileage, final Integer maxMileage,
+                                   final Integer minYear, final Integer maxYear,
+                                   final Integer minPrice, final Integer maxPrice) {
+      return getFiltered(minMileage, maxMileage,
+            minYear, maxYear,
+            minPrice, maxPrice).stream()
+            .filter(ad->ad.getCar().getMake().equals(make))
+            .collect(Collectors.toList());
    }
 }

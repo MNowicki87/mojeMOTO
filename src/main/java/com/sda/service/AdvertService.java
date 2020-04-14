@@ -5,15 +5,18 @@ import com.sda.repository.AdvertRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class AdvertService {
    
    private static AdvertService advertService;
    
-   private AdvertRepository advertRepository;
+   private final AdvertRepository advertRepository;
    
-   public static AdvertService getInstance(){
+   public static AdvertService getInstance() {
       if (advertService == null) {
          advertService = new AdvertService(AdvertRepository.anAdvertRepository());
       }
@@ -22,6 +25,10 @@ public class AdvertService {
    
    public List<Advert> getAllAds() {
       return advertRepository.getAll();
+   }
+   
+   public List<String> getAllMakes() {
+      return advertRepository.getAll().stream().map(ad -> ad.getCar().getMake()).sorted().collect(Collectors.toList());
    }
    
    public List<Advert> getAdsByUser(String login) {
@@ -34,5 +41,23 @@ public class AdvertService {
    
    public void depopulateData() {
       advertRepository.drop();
+   }
+   
+   public List<Advert> getFiltered(final String make,
+                                   final int minMileage, final int maxMileage,
+                                   final int minYear, final int maxYear,
+                                   final int minPrice, final int maxPrice) {
+      
+      if (make.equals("any")) {
+         return advertRepository.getFiltered(minMileage, maxMileage,
+               minYear, maxYear,
+               minPrice, maxPrice);
+      } else {
+         return advertRepository.getFiltered(make,
+               minMileage, maxMileage,
+               minYear, maxYear,
+               minPrice, maxPrice);
+      }
+      
    }
 }

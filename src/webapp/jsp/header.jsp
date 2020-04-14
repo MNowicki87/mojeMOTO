@@ -316,6 +316,10 @@
             margin-bottom: 15px;
         }
 
+        input.w-50 {
+            min-width: 60px;
+        }
+
     </style>
 </head>
 
