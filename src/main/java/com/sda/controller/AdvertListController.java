@@ -31,27 +31,13 @@ public class AdvertListController extends HttpServlet {
       if (req.getParameterMap().isEmpty()) {
          req.setAttribute("adsList", advertService.getAllAds());
       } else {
-         
-         final Map<String, String> parameterMap = req.getParameterMap().entrySet().stream()
-               .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue()[0]));
-         
-         parameterMap.entrySet().forEach(entry -> {
-            if (entry.getValue().isBlank()) {
-               if (entry.getKey().equals("make")) {
-                  entry.setValue(MAKE_INIT_VALUE);
-               } else {
-                  entry.setValue("0");
-               }
-            }
-         });
-         
-         final String make = Optional.ofNullable(parameterMap.get("make")).orElse(MAKE_INIT_VALUE);
-         final int minMileage = Integer.parseInt(parameterMap.get("mileage-from"));
-         final int maxMileage = Integer.parseInt(parameterMap.get("mileage-to"));
-         final int minYear = Integer.parseInt(parameterMap.get("year-from"));
-         final int maxYear = Integer.parseInt(parameterMap.get("year-to"));
-         final int minPrice = Integer.parseInt(parameterMap.get("price-from"));
-         final int maxPrice = Integer.parseInt(parameterMap.get("price-to"));
+         final String make = (String) req.getAttribute("make");
+         final int minPrice = (int) req.getAttribute("minPrice");
+         final int maxPrice = (int) req.getAttribute("maxPrice");
+         final int minYear = (int) req.getAttribute("minYear");
+         final int maxYear = (int) req.getAttribute("maxYear");
+         final int minMileage = (int) req.getAttribute("minMileage");
+         final int maxMileage = (int) req.getAttribute("maxMileage");
          
          req.setAttribute("adsList", advertService.getFiltered(make,
                minMileage, maxMileage,

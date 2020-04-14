@@ -48,7 +48,7 @@ public class AdvertService {
                                    final int minYear, final int maxYear,
                                    final int minPrice, final int maxPrice) {
       
-      if (make.equals("any")) {
+      if ("any".equals(make)) {
          return advertRepository.getFiltered(minMileage, maxMileage,
                minYear, maxYear,
                minPrice, maxPrice);
