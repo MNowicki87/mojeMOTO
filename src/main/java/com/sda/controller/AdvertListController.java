@@ -1,5 +1,6 @@
 package com.sda.controller;
 
+import com.sda.filter.AdsQueryValidationFilter;
 import com.sda.service.AdvertService;
 
 import javax.servlet.ServletException;
@@ -44,6 +45,7 @@ public class AdvertListController extends HttpServlet {
                minYear, maxYear,
                minPrice, maxPrice));
       }
+      
       req.getRequestDispatcher("/list.jsp").forward(req, resp);
    }
    

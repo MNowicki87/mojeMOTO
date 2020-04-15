@@ -26,26 +26,48 @@ public class AdsQueryValidationFilter implements Filter {
       final Map<String, String> parameterMap = req.getParameterMap().entrySet().stream()
             .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue()[0]));
       
-      final String make = Optional.ofNullable(parameterMap.get("make")).orElse(MAKE_DEFAULT);
-      final int minPrice = validateParameter(Optional.ofNullable(parameterMap.get("minPrice")).orElse(""), MIN_PRICE_DEFAULT);
-      final int maxPrice = validateParameter(Optional.ofNullable(parameterMap.get("maxPrice")).orElse(""), MAX_PRICE_DEFAULT);
-      final int minYear = validateParameter(Optional.ofNullable(parameterMap.get("minYear")).orElse(""), MIN_YEAR_DEFAULT);
-      final int maxYear = validateParameter(Optional.ofNullable(parameterMap.get("maxYear")).orElse(""), MAX_YEAR_DEFAULT);
-      final int minMileage = validateParameter(Optional.ofNullable(parameterMap.get("minMileage")).orElse(""), MIN_MILEAGE_DEFAULT);
-      final int maxMileage = validateParameter(Optional.ofNullable(parameterMap.get("maxMileage")).orElse(""), MAX_MILEAGE_DEFAULT);
+      final String make = parameterMap.get("make");
+      final int minPrice = validateParam(Optional.ofNullable(parameterMap.get("minPrice")).orElse(""), MIN_PRICE_DEFAULT);
+      final int maxPrice = validateParam(Optional.ofNullable(parameterMap.get("maxPrice")).orElse(""), MAX_PRICE_DEFAULT);
+      final int minYear = validateParam(Optional.ofNullable(parameterMap.get("minYear")).orElse(""), MIN_YEAR_DEFAULT);
+      final int maxYear = validateParam(Optional.ofNullable(parameterMap.get("maxYear")).orElse(""), MAX_YEAR_DEFAULT);
+      final int minMileage = validateParam(Optional.ofNullable(parameterMap.get("minMileage")).orElse(""), MIN_MILEAGE_DEFAULT);
+      final int maxMileage = validateParam(Optional.ofNullable(parameterMap.get("maxMileage")).orElse(""), MAX_MILEAGE_DEFAULT);
       
       req.setAttribute("make", make);
-      req.setAttribute("minPrice", minPrice);
-      req.setAttribute("maxPrice", maxPrice);
-      req.setAttribute("minYear", minYear);
-      req.setAttribute("maxYear", maxYear);
-      req.setAttribute("minMileage", minMileage);
-      req.setAttribute("maxMileage", maxMileage);
+      
+      validateAndSetAttrPair("Price", minPrice, maxPrice, MIN_PRICE_DEFAULT, MAX_PRICE_DEFAULT, req, resp);
+      validateAndSetAttrPair("Year", minYear, maxYear, MIN_YEAR_DEFAULT, MAX_YEAR_DEFAULT, req, resp);
+      validateAndSetAttrPair("Mileage", minMileage, maxMileage, MIN_MILEAGE_DEFAULT, MAX_MILEAGE_DEFAULT, req, resp);
       
       chain.doFilter(req, resp);
    }
    
-   private int validateParameter(final String number, final int numDefault) {
+   private void validateAndSetAttrPair(final String paramName, int min, int max,
+                                       final int minDefault, final int maxDefault,
+                                       final ServletRequest req, final ServletResponse resp) throws ServletException, IOException {
+      
+      if (min >= max || min < minDefault || max > maxDefault) {
+         min = minDefault;
+         max = maxDefault;
+         switch (paramName) {
+            case "Price":
+               req.setAttribute("invalid"+paramName+"Param", "Nieprawidłowy zakres cen! Kryteria zingorowane.");
+               break;
+            case "Year":
+               req.setAttribute("invalid"+paramName+"Param", "Nieprawidłowe lata produkcji! Kryteria zingorowane.");
+               break;
+            case "Mileage":
+               req.setAttribute("invalid"+paramName+"Param", "Nieprawidłowy zakres przebiegu! Kryteria zingorowane.");
+         }
+      }
+      
+      req.setAttribute("min" + paramName, min);
+      req.setAttribute("max" + paramName, max);
+      
+   }
+   
+   private int validateParam(final String number, final int numDefault) {
       if (number.isBlank()) return numDefault;
       try {
          return Integer.parseInt(number);
@@ -56,7 +78,6 @@ public class AdsQueryValidationFilter implements Filter {
    }
    
    public void init(FilterConfig config) throws ServletException {
-   
    }
    
 }

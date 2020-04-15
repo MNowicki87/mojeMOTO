@@ -1,5 +1,4 @@
 <%@ page import="java.time.LocalDateTime" %>
-<%@ page import="java.lang.Integer" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
 
@@ -40,7 +39,7 @@
                     <input class="w-50" type="number" placeholder="od" name="minMileage"
                            min="0" max="${Integer.MAX_VALUE}" maxlength="7"
                            size="7">
-                    <input class="w-50" type="number" placeholder="do" name="maxMileage"  min="0"
+                    <input class="w-50" type="number" placeholder="do" name="maxMileage" min="0"
                            max="${Integer.MAX_VALUE}" maxlength="7" size="7">
                 </div>
             </div>
@@ -50,6 +49,15 @@
                 <button class="btn btn-primary btn-block" type="submit">Filtruj</button>
             </div>
         </div>
+        <c:if test="${not empty requestScope.invalidPriceParam}">
+            <p class="text-center text-danger mt-3">${requestScope.invalidPriceParam}</p>
+        </c:if>
+        <c:if test="${not empty requestScope.invalidYearParam}">
+            <p class="text-center text-danger mt-3">${requestScope.invalidYearParam}</p>
+        </c:if>
+        <c:if test="${not empty requestScope.invalidMileageParam}">
+            <p class="text-center text-danger mt-3">${requestScope.invalidMileageParam}</p>
+        </c:if>
     </form>
 </div>
 <div class="container">

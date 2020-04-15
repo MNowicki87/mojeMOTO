@@ -354,7 +354,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user == null}">
                 <span class="navbar-text actions ml-auto">
-                    <a href="/login" class="login">
+                    <a href="/login" class="login align-middle">
                         Zaloguj
                     </a>
                     <a class="btn btn-light action-button" role="button" href="/register">
@@ -364,7 +364,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <span class="navbar-text actions">
-                    <span class="navbar-text">Witaj, ${sessionScope.user.name}!</span>
+                    <span class="navbar-text align-middle mr-2">Witaj, ${sessionScope.user.name}!</span>
                     <a class="btn btn-outline-danger action-button" role="button" href="/logout">
                         Wyloguj
                     </a>
