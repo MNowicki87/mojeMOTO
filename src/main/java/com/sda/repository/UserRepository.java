@@ -12,13 +12,19 @@ import java.util.Optional;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserRepository {
    
+   public static final String USR1 = "usr1";
+   public static final String USR2 = "usr2";
+   public static final String PWD = "pwd";
+   
+   
    private static UserRepository userRepository;
    
-   private List<User> users;
+   private final List<User> users;
    
    public static UserRepository aUserRepository() {
       if (userRepository == null) {
          userRepository = new UserRepository(new ArrayList<>());
+         populateUsers();
       }
       return userRepository;
    }
@@ -43,5 +49,30 @@ public class UserRepository {
    public void depopulataData() {
       users.clear();
    }
+   
+   private static void populateUsers() {
+      final String USR1 = "usr1";
+      final String USR2 = "usr2";
+      final String PWD = "pwd";
+      
+      final User mnow = User.builder()
+            .name("Michał")
+            .surname("Nowicki")
+            .login(USR1)
+            .password(PWD)
+            .build();
+      
+      final User jkow = User.builder()
+            .name("Jan")
+            .surname("Kowalski")
+            .login(USR2)
+            .password(PWD)
+            .build();
+      
+      aUserRepository().users.add(mnow);
+      aUserRepository().users.add(jkow);
+   }
+   
+   
 }
 

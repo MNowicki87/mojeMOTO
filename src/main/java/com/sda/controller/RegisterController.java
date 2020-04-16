@@ -29,7 +29,7 @@ public class RegisterController extends HttpServlet {
       User user = createUserFromForm(httpServletRequest);
       boolean created = userService.registerUser(user);
       if (created) {
-         httpServletRequest.getRequestDispatcher("home.jsp")
+         httpServletRequest.getRequestDispatcher("login.jsp")
                .forward(httpServletRequest, httpServletResponse);
       } else {
          httpServletRequest.setAttribute("loginExists", user.getLogin());

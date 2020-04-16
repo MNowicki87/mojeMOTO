@@ -17,7 +17,7 @@
         <p class="text-center" style="font-weight: bold;font-style: normal;font-family: Raleway, sans-serif;">
             <c:if test="${sessionScope.user == null}">
                 <a class="btn btn-outline-primary btn-lg text-white bg-primary border rounded shadow-lg heartBeat"
-                   role="button" href="/setup"
+                   role="button" href="/login"
                    style="opacity: 1;filter: blur(0px);font-family: Raleway, sans-serif;font-weight: bold;">
                     Zaloguj się
                 </a>
