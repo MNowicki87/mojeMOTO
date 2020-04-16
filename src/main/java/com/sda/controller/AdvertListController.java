@@ -18,8 +18,6 @@ import java.util.stream.Collectors;
 @WebServlet(name = "AdvertListController", value = "/list")
 public class AdvertListController extends HttpServlet {
    
-   private static final String MAKE_INIT_VALUE = "any";
-   private static final int currentYear = LocalDateTime.now().getYear();
    private static final AdvertService advertService = AdvertService.getInstance();
    
    @Override

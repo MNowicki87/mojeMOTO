@@ -46,7 +46,7 @@ public class AdvertService {
                                    final int minYear, final int maxYear,
                                    final int minPrice, final int maxPrice) {
       
-      if ("any".equals(make)) {
+      if (!getAllMakes().contains(make)) {
          return advertRepository.getFiltered(minMileage, maxMileage,
                minYear, maxYear,
                minPrice, maxPrice);

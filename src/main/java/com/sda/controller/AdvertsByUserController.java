@@ -12,11 +12,13 @@ import java.io.IOException;
 
 @WebServlet(name = "AdvertsByUserController", value = "/myads")
 public class AdvertsByUserController extends HttpServlet {
-   private static AdvertService advertService = AdvertService.getInstance();
+   private static final AdvertService advertService = AdvertService.getInstance();
    @Override
    protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
       User user = (User) httpServletRequest.getSession().getAttribute("user");
       httpServletRequest.setAttribute("adsList", advertService.getAdsByUser(user.getLogin()));
+      httpServletRequest.setAttribute("myads", true);
+      
       httpServletRequest.getRequestDispatcher("list.jsp").forward(httpServletRequest, httpServletResponse);
    }
    
