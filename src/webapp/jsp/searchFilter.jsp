@@ -4,7 +4,7 @@
 <div class="container my-5 shadow-lg p-2">
     <form action="/list" method="get">
         <div class="row">
-            <div class="form-group col-5">
+            <div class="form-group col-lg-3">
                 <label for="make">Marka:</label>
                 <select type="select" class="form-control form-control-lg" name="make" id="make" size="1">
                     <option value="any">Wybierz markę…</option>
@@ -13,7 +13,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <div class="form-group col">
+            <div class="form-group col-xs-2 col-md-3">
                 <label>Cena:</label>
                 <div class="d-flex flex-row">
                     <input class="w-50" type="number" placeholder="od" name="minPrice" min="0"
@@ -22,7 +22,7 @@
                            min="0" max="${Integer.MAX_VALUE}" maxlength="8" size="9">
                 </div>
             </div>
-            <div class="form-group col">
+            <div class="form-group col-xs-2 col-md-3">
                 <label class="d-block">Rok produkcji:</label>
                 <div class="d-flex flex-row">
                     <input class="w-50" type="number" placeholder="od" name="minYear"
@@ -31,7 +31,7 @@
                            min="1900" max="${LocalDateTime.now().getYear()+1}" maxlength="4" size="4">
                 </div>
             </div>
-            <div class="form-group col">
+            <div class="form-group col-xs-2 col-md-3">
                 <label class="d-block">Przebieg:</label>
                 <div class="d-flex flex-row">
                     <input class="w-50" type="number" placeholder="od" name="minMileage"
