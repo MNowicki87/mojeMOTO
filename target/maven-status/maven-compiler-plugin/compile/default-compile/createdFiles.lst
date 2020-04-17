@@ -1,10 +1,10 @@
 com/sda/controller/RegisterController.class
 com/sda/model/Advert$AdvertBuilder.class
 com/sda/model/Car$CarBuilder.class
-com/sda/controller/SetUpController.class
 com/sda/controller/LoginController.class
 com/sda/controller/AdvertsByUserController.class
 com/sda/controller/AdvertAddController.class
+com/sda/filter/AdsQueryValidationFilter.class
 com/sda/repository/AdvertRepository.class
 com/sda/model/User$UserBuilder.class
 com/sda/service/AdvertService.class

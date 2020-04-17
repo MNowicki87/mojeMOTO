@@ -8,7 +8,7 @@
 <div class="container">
     <div class="card-row d-flex flex-wrap">
         <c:forEach items="${requestScope.adsList}" var="entry">
-            <div class="col-4 mb-3 d-flex">
+            <div class="col-lg-4 mb-3 d-flex">
                 <div class="card">
                     <img class="card-img-top w-100 d-block"
                          src="<c:out value="${entry.car.imageLink}"/>"
