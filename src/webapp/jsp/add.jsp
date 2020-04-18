@@ -7,6 +7,7 @@
                 <div class="form-group">
                     <label for="make">Marka:</label>
                     <input class="form-control"
+                           id="make"
                            type="text"
                            name="make"
                            placeholder="Wpisz markę…"
@@ -18,6 +19,7 @@
                 <div class="form-group">
                     <label for="model">Model:</label>
                     <input class="form-control"
+                           id="model"
                            type="text"
                            name="model"
                            placeholder="Podaj model…"
@@ -31,6 +33,7 @@
                     <input class="form-control"
                            placeholder="Podaj rok produkcji…"
                            type="number"
+                           id="year"
                            name="year"
                            min="1900"
                            max="2020"
@@ -45,10 +48,12 @@
                     <label for="mileage">Przebieg:</label>
                     <div class="input-group">
                         <input class="form-control"
+                               id="mileage"
                                placeholder="Podaj przebieg…"
-                               type="text"
+                               type="number"
                                name="mileage"
                                min="0"
+                               step="1"
                                required>
                         <div class="input-group-append">
                             <span class="input-group-text">km</span>
@@ -60,7 +65,8 @@
                 <div class="form-group"><label for="price">Cena:</label>
                     <div class="input-group">
                         <input class="form-control"
-                               type="text"
+                               id="price"
+                               type="number"
                                name="price"
                                min="100"
                                required
@@ -75,6 +81,7 @@
                     <input class="form-control"
                            type="url"
                            name="image-link"
+                           id="image-link"
                            placeholder="Tu wklej link do zdjęcia…"
                            required>
                 </div>
@@ -82,11 +89,18 @@
         </div>
 
         <div class="container">
-            <h3>Zwiększ zainteresowanie ogłoszeniem!</h3>
-            <p>Usługa Ogłoszenie premium zwiększa widoczność o 200000%</p>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" name="premium" class="custom-control-input" id="customSwitch1">
-                <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+            <div class="jumbotron text-white">
+                <div class="col-9 m-auto jumbo-inner-box">
+                    <h3>Zwiększ zainteresowanie ogłoszeniem!</h3>
+                    <p>
+                        Ogłoszenia <span class="text-uppercase text-primary font-weight-bold">premium</span>
+                        mają o 200 000% <strong>większą widoczność!</strong>
+                    </p>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="premium" class="custom-control-input" id="premiumToggle">
+                        <label class="custom-control-label" for="premiumToggle">Tak! Chcę, żeby moje ogłoszenie było super-widoczne!</label>
+                    </div>
+                </div>
             </div>
         </div>
 

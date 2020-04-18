@@ -316,9 +316,22 @@
             margin-bottom: 15px;
         }
 
+        .card {
+            min-width: 100%;
+        }
+
         input.w-50 {
             min-width: 60px;
         }
+
+        .custom-switch .custom-control-label::after {
+            border-color: #1579f6;
+        }
+        .custom-control-label::before{
+            border-color: #1579f6;
+        }
+
+
 
     </style>
 </head>
