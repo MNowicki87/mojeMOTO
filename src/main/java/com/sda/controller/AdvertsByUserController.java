@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AdvertsByUserController", value = "/myads")
+@WebServlet(name = "AdvertsByUserController", value = "/panel/myads")
 public class AdvertsByUserController extends HttpServlet {
    private static final AdvertService advertService = AdvertService.getInstance();
    @Override
@@ -19,7 +19,7 @@ public class AdvertsByUserController extends HttpServlet {
       httpServletRequest.setAttribute("adsList", advertService.getAdsByUser(user.getLogin()));
       httpServletRequest.setAttribute("myads", true);
       
-      httpServletRequest.getRequestDispatcher("list.jsp").forward(httpServletRequest, httpServletResponse);
+      httpServletRequest.getRequestDispatcher("/list.jsp").forward(httpServletRequest, httpServletResponse);
    }
    
 }

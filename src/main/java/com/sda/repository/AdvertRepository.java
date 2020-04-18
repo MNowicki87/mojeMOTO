@@ -2,7 +2,6 @@ package com.sda.repository;
 
 import com.sda.model.Advert;
 import com.sda.model.Car;
-import com.sda.model.User;
 import com.sda.service.UserService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,52 +23,6 @@ public class AdvertRepository {
          addListings();
       }
       return advertRepository;
-   }
-   
-   
-   public List<Advert> getAll() {
-      return List.copyOf(adverts);
-   }
-   
-   public List<Advert> getAdsByUser(String userLogin) {
-      return adverts.stream()
-            .filter(advert ->
-                  advert.getOwner().getLogin().equals(userLogin))
-            .collect(Collectors.toList());
-   }
-   
-   public boolean addAdvert(Advert advert) {
-      return adverts.add(advert);
-   }
-   
-   
-   public void drop() {
-      adverts.clear();
-   }
-   
-   public List<Advert> getFiltered(final Integer minMileage, final Integer maxMileage,
-                                   final Integer minYear, final Integer maxYear,
-                                   final Integer minPrice, final Integer maxPrice) {
-      
-      return adverts.parallelStream()
-            .filter(ad -> ad.getCar().getMileage() >= minMileage
-                  && ad.getCar().getMileage() <= maxMileage)
-            .filter(ad -> ad.getCar().getYear() >= minYear
-                  && ad.getCar().getYear() <= maxYear)
-            .filter(ad -> ad.getPrice() >=minPrice
-            && ad.getPrice() <= maxPrice)
-            .collect(Collectors.toList());
-   }
-   
-   public List<Advert> getFiltered(final String make,
-                                   final Integer minMileage, final Integer maxMileage,
-                                   final Integer minYear, final Integer maxYear,
-                                   final Integer minPrice, final Integer maxPrice) {
-      return getFiltered(minMileage, maxMileage,
-            minYear, maxYear,
-            minPrice, maxPrice).stream()
-            .filter(ad->ad.getCar().getMake().equals(make))
-            .collect(Collectors.toList());
    }
    
    private static void addListings() {
@@ -139,6 +92,7 @@ public class AdvertRepository {
             .isActive(true)
             .owner(userService.getUserByLogin(USR1, PWD).get())
             .price(28900)
+            .isPremium(true)
             .build();
       advertRepository.addAdvert(ad4);
       
@@ -171,8 +125,53 @@ public class AdvertRepository {
             .isActive(true)
             .owner(userService.getUserByLogin(USR1, PWD).get())
             .price(18_000_000)
+            .isPremium(true)
             .build();
       advertRepository.addAdvert(ad6);
+   }
+   
+   public List<Advert> getAll() {
+      return List.copyOf(adverts);
+   }
+   
+   public List<Advert> getAdsByUser(String userLogin) {
+      return adverts.stream()
+            .filter(advert ->
+                  advert.getOwner().getLogin().equals(userLogin))
+            .collect(Collectors.toList());
+   }
+   
+   public boolean addAdvert(Advert advert) {
+      return adverts.add(advert);
+   }
+   
+   public void drop() {
+      adverts.clear();
+   }
+   
+   public List<Advert> getFiltered(final Integer minMileage, final Integer maxMileage,
+                                   final Integer minYear, final Integer maxYear,
+                                   final Integer minPrice, final Integer maxPrice) {
+      
+      return adverts.parallelStream()
+            .filter(ad -> ad.getCar().getMileage() >= minMileage
+                  && ad.getCar().getMileage() <= maxMileage)
+            .filter(ad -> ad.getCar().getYear() >= minYear
+                  && ad.getCar().getYear() <= maxYear)
+            .filter(ad -> ad.getPrice() >= minPrice
+                  && ad.getPrice() <= maxPrice)
+            .collect(Collectors.toList());
+   }
+   
+   public List<Advert> getFiltered(final String make,
+                                   final Integer minMileage, final Integer maxMileage,
+                                   final Integer minYear, final Integer maxYear,
+                                   final Integer minPrice, final Integer maxPrice) {
+      return getFiltered(minMileage, maxMileage,
+            minYear, maxYear,
+            minPrice, maxPrice).stream()
+            .filter(ad -> ad.getCar().getMake().equals(make))
+            .collect(Collectors.toList());
    }
    
 }

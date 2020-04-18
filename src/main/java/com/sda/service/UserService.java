@@ -2,9 +2,11 @@ package com.sda.service;
 
 import com.sda.model.User;
 import com.sda.repository.UserRepository;
+import com.sda.request.EditUserRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -12,7 +14,7 @@ public class UserService {
    
    private static UserService userService;
    
-   private UserRepository userRepository;
+   private final UserRepository userRepository;
    
    public static UserService getInstance() {
       if(userService == null) {
@@ -32,4 +34,20 @@ public class UserService {
    public void depopulateData() {
       userRepository.depopulataData();
    }
+   
+   public List<User> findAll() {
+      return userRepository.findAll();
+   }
+   
+   public User getUserById(Integer id) {
+      return userRepository.getUserById(id);
+   }
+   
+   public void editUser(EditUserRequest request) {
+      User user = userRepository.getUserById(request.getId());
+      user.setName(request.getName());
+      user.setSurname(request.getSurname());
+   }
+
+
 }

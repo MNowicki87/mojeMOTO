@@ -13,6 +13,13 @@
                     <img class="card-img-top w-100 d-block"
                          src="<c:out value="${entry.car.imageLink}"/>"
                          style="background-size: cover;" alt="${entry.car.toString()}">
+                    <c:if test="${entry.premium}">
+                    <span class="badge badge-success position-absolute" style="top: -10px; right: -10px">
+                        <span class="material-icons">
+                            stars
+                        </span>
+                    </span>
+                    </c:if>
                     <div class="card-body d-flex d-lg-flex flex-column flex-grow-1">
                         <div class="d-flex flex-row justify-content-between">
                             <h4><c:out value="${entry.car.make}"/></h4>

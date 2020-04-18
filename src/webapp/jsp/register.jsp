@@ -21,18 +21,19 @@
             </div>
             <div class="form-group">
                 <input class="form-control" type="text" name="login" required="" placeholder="Login"
-                                           minlength="4">
+                       minlength="4">
             </div>
             <div class="form-group">
                 <input class="form-control" type="password" name="pwd" required=""
-                                           placeholder="Hasło" minlength="2">
+                       placeholder="Hasło" minlength="2">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">
                     Zarejestruj
                 </button>
             </div>
-            <a href="/login" class="already">Masz już konto? Zaloguj się turaj.</a></form>
+            <a href="/login" class="already">Masz już konto? Zaloguj się tutaj.</a></form>
         </form>
     </div>
+</div>
 <jsp:include page="footer.jsp"/>

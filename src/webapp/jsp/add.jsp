@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp"/>
 
 <div class="container">
-    <form method="post" action="/add">
+    <form method="post" action="/panel/add">
         <div class="form-row">
             <div class="col">
                 <div class="form-group">
@@ -80,6 +80,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <h3>Zwiększ zainteresowanie ogłoszeniem!</h3>
+            <p>Usługa Ogłoszenie premium zwiększa widoczność o 200000%</p>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="premium" class="custom-control-input" id="customSwitch1">
+                <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+            </div>
+        </div>
+
         <div class="form-row">
             <div class="col text-center d-block d-lg-flex justify-content-lg-center align-items-lg-center">
                 <button class="btn btn-success btn-block btn-lg d-lg-flex justify-content-lg-center"

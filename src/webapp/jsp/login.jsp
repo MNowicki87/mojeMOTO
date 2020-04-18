@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
 
 
@@ -14,7 +15,10 @@
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">Zaloguj</button>
             </div>
-            <a href="/register" class="already">Nie masz konta? Zarejestruj się turaj.</a>
+            <c:if test="${not empty requestScope.loginFailure}">
+                <p class="text-danger">${requestScope.loginFailure}</p>
+            </c:if>
+            <a href="/register" class="already">Nie masz konta? Zarejestruj się tutaj.</a>
         </form>
     </div>
 </div>

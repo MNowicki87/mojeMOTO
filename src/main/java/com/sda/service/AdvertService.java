@@ -22,7 +22,16 @@ public class AdvertService {
    }
    
    public List<Advert> getAllAds() {
-      return advertRepository.getAll();
+      return getPremiumAdsFirst(advertRepository.getAll());
+   }
+   
+   private List<Advert> getPremiumAdsFirst(final List<Advert> adList) {
+      final List<Advert> premiumFirstList = adList.stream()
+            .filter(Advert::isPremium).collect(Collectors.toList());
+      final List<Advert> standardList = adList.stream()
+            .filter(ad -> !ad.isPremium()).collect(Collectors.toList());
+      premiumFirstList.addAll(standardList);
+      return premiumFirstList;
    }
    
    public List<String> getAllMakes() {
@@ -45,17 +54,20 @@ public class AdvertService {
                                    final int minMileage, final int maxMileage,
                                    final int minYear, final int maxYear,
                                    final int minPrice, final int maxPrice) {
-      
+      List<Advert> filtered;
       if (!getAllMakes().contains(make)) {
-         return advertRepository.getFiltered(minMileage, maxMileage,
+         filtered = advertRepository.getFiltered(minMileage, maxMileage,
                minYear, maxYear,
                minPrice, maxPrice);
       } else {
-         return advertRepository.getFiltered(make,
+         filtered = advertRepository.getFiltered(make,
                minMileage, maxMileage,
                minYear, maxYear,
                minPrice, maxPrice);
       }
       
+      return getPremiumAdsFirst(filtered);
+      
    }
+   
 }

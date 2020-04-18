@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@WebFilter("/list")
+@WebFilter("/panel/list")
 public class AdsQueryValidationFilter implements Filter {
    private static final String MAKE_DEFAULT = "any";
    private static final int MIN_PRICE_DEFAULT = 100;

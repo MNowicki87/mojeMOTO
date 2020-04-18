@@ -24,7 +24,7 @@
             </c:if>
             <c:if test="${sessionScope.user != null}">
                 <a class="btn btn-outline-primary btn-lg text-white bg-primary border rounded shadow-lg heartBeat"
-                   role="button" href="/list"
+                   role="button" href="/panel/list"
                    style="opacity: 1;filter: blur(0px);font-family: Raleway, sans-serif;font-weight: bold;">
                     Przeglądaj ogłoszenia
                 </a>

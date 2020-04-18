@@ -334,22 +334,27 @@
                 <c:if test="${sessionScope.user != null}">
                     <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="/list">Ogłoszenia</a>
+                            <a class="nav-link" href="/panel/list">Ogłoszenia</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                               aria-expanded="false" href="/myads">
+                               aria-expanded="false">
                                 Moje ogłoszenia
                             </a>
                             <div class="dropdown-menu" role="menu">
-                                <a class="dropdown-item" role="presentation" href="/myads">
+                                <a class="dropdown-item" role="presentation" href="/panel/myads">
                                     Pokaż moje ogłoszenia
                                 </a>
-                                <a class="dropdown-item" role="presentation" href="/add">
+                                <a class="dropdown-item" role="presentation" href="/panel/add">
                                     Dodaj nowe ogłoszenie
                                 </a>
                             </div>
                         </li>
+                        <c:if test="${sessionScope.user.admin}">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="/admin/users">Użytkownicy</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </c:if>
                 <c:if test="${sessionScope.user == null}">
@@ -370,7 +375,6 @@
                     </a>
                 </span>
                 </c:if>
-
             </div>
         </div>
     </nav>

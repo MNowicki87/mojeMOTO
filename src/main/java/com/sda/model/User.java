@@ -1,16 +1,21 @@
 package com.sda.model;
 
-
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+
+import java.util.List;
 
 @Builder
-@Value
+@Data
 public class User {
    
+   int id;
    String name;
    String surname;
    String login;
    String password;
+   List<Advert> observedAds;
+   boolean isAdmin;
+   boolean isActive;
    
 }
