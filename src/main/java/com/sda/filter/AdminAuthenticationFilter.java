@@ -30,9 +30,8 @@ public class AdminAuthenticationFilter implements Filter {
          }
       } else {
          System.out.println("Admin access privileges required! Redirecting");
-         response.sendRedirect("/home");
+         response.sendRedirect(request.getContextPath() + "/home");
       }
-      
    }
    
    public void init(FilterConfig config) throws ServletException {

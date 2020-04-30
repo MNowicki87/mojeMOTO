@@ -30,7 +30,7 @@ public class AddAdvertController extends HttpServlet {
       Advert advert = buildAd(req);
       advertService.addListing(advert);
 //      req.getRequestDispatcher("/list.jsp").forward(req, resp);
-      resp.sendRedirect("/panel/myads");
+      resp.sendRedirect(req.getContextPath()+"/panel/myads");
    }
    
    private Advert buildAd(final HttpServletRequest req) {

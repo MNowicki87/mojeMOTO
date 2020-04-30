@@ -10,10 +10,10 @@
     <div class="form-container">
         <div class="image-holder"
              style="background-image: url(&quot;http://www.banktapet.pl/pictures/2016/0716/1/classic-kool-nice-car-pics-583905.jpg&quot;);background-position: center;"></div>
-        <form action="/register" method="post">
+        <form action="register" method="post">
             <h2 class="text-center"><strong>Utwórz konto</strong></h2>
             <div class="form-group">
-                <input class="form-control" type="text" name="name" required placeholder="Imię"
+                <input class="form-control" type="text" name="name" required autofocus placeholder="Imię"
                        minlength="2">
             </div>
             <div class="form-group">
@@ -32,7 +32,7 @@
                     Zarejestruj
                 </button>
             </div>
-            <a href="/login" class="already">Masz już konto? Zaloguj się tutaj.</a></form>
+            <a href="login" class="already">Masz już konto? Zaloguj się tutaj.</a></form>
         </form>
     </div>
 </div>

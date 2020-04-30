@@ -22,7 +22,7 @@
                 <td>${listedUser.surname}</td>
                 <td>${listedUser.login}</td>
                 <td>${listedUser.password}</td>
-                <td><a href="/admin/user/editUser?userId=${listedUser.id}">Edytuj</a></td>
+                <td><a href="admin/user/editUser?userId=${listedUser.id}">Edytuj</a></td>
             </tr>
         </c:forEach>
         </tbody>

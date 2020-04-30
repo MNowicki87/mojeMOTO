@@ -1,7 +1,7 @@
 <%@ page import="java.time.LocalDateTime" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container my-5 shadow-lg p-2">
-    <form action="/panel/list" method="get">
+    <form action="panel/list" method="get">
         <div class="row">
             <div class="form-group col-lg-3">
                 <label for="make">Marka:</label>

@@ -8,13 +8,13 @@
             <a href="/home"><i class="icon ion-social-facebook"></i></a>
         </div>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="/home">Strona główna</a></li>
+            <li class="list-inline-item"><a href="home">Strona główna</a></li>
             <c:if test="${sessionScope.user != null}">
-                <li class="list-inline-item"><a href="/list">Ogłoszenia</a></li>
-                <li class="list-inline-item"><a href="/myads">Moje ogłoszenia</a></li>
+                <li class="list-inline-item"><a href="list">Ogłoszenia</a></li>
+                <li class="list-inline-item"><a href="myads">Moje ogłoszenia</a></li>
             </c:if>
-            <li class="list-inline-item"><a href="/home">Regulamin</a></li>
-            <li class="list-inline-item"><a href="/home">Polityka prywatności</a></li>
+            <li class="list-inline-item"><a href="home">Regulamin</a></li>
+            <li class="list-inline-item"><a href="home">Polityka prywatności</a></li>
         </ul>
         <p class="copyright">mojeMOTO © 2020</p>
     </footer>

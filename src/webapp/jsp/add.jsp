@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp"/>
 
 <div class="container">
-    <form method="post" action="/panel/add">
+    <form method="post" action="panel/add">
         <div class="form-row">
             <div class="col">
                 <div class="form-group">

@@ -18,7 +18,7 @@ public class UserService {
    
    public static UserService getInstance() {
       if(userService == null) {
-         userService = new UserService(UserRepository.aUserRepository());
+         userService = new UserService(UserRepository.userRepository());
       }
       return userService;
    }

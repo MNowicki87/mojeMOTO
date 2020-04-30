@@ -4,9 +4,7 @@ import com.sda.model.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -22,7 +20,7 @@ public class UserRepository {
    
    private final List<User> users;
    
-   public static UserRepository aUserRepository() {
+   public static UserRepository userRepository() {
       if (userRepository == null) {
          userRepository = new UserRepository(new ArrayList<>());
          populateUsers();
@@ -62,6 +60,7 @@ public class UserRepository {
             .surname("Nowicki")
             .login(USR1)
             .password(PWD)
+            .email("nowicki.pl@gmail.com")
             .isAdmin(false)
             .isActive(true)
             .build();
@@ -80,6 +79,7 @@ public class UserRepository {
             .surname("admin")
             .login("admin")
             .password("admin")
+            .email("nowicki.pl@gmail.com")
             .isAdmin(true)
             .build();
    
@@ -87,11 +87,13 @@ public class UserRepository {
       mnow.setId(counter.getAndIncrement());
       jkow.setId(counter.getAndIncrement());
       
-      aUserRepository().users.add(mnow);
-      aUserRepository().users.add(jkow);
-      aUserRepository().users.add(admin);
+      userRepository().users.add(mnow);
+      userRepository().users.add(jkow);
+      userRepository().users.add(admin);
+      
+      userRepository().users.sort(Comparator.comparingInt(User::getId));
+      
    }
-   
    
    public List<User> findAll() {
       return List.copyOf(users);

@@ -36,7 +36,7 @@ public class EditUserController extends HttpServlet {
       EditUserRequest editUserRequest = new EditUserRequest(id, name, surname);
       userService.editUser(editUserRequest);
       
-      response.sendRedirect("/admin/users");
+      response.sendRedirect(request.getContextPath() + "/admin/users");
    }
    
    

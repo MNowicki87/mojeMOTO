@@ -16,10 +16,10 @@ public class AuthenticationFilter implements Filter {
       HttpServletResponse response = (HttpServletResponse) resp;
       
       final Object user = request.getSession().getAttribute("user");
-   
+      
       if (user == null) {
          System.out.println("User is not logged in! Redirecting");
-         response.sendRedirect("/login");
+         response.sendRedirect(request.getContextPath() + "login");
       } else {
          chain.doFilter(req, resp);
       }

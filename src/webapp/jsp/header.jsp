@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>mojeMOTO</title>
+    <base href="http://localhost:8080/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -339,7 +340,7 @@
 <body>
 <div>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-        <div class="container"><a class="navbar-brand" href="/home">mojeMOTO</a>
+        <div class="container"><a class="navbar-brand" href="home">mojeMOTO</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
@@ -347,7 +348,7 @@
                 <c:if test="${sessionScope.user != null}">
                     <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="/panel/list">Ogłoszenia</a>
+                            <a class="nav-link" href="panel/list">Ogłoszenia</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown"
@@ -355,27 +356,27 @@
                                 Moje ogłoszenia
                             </a>
                             <div class="dropdown-menu" role="menu">
-                                <a class="dropdown-item" role="presentation" href="/panel/myads">
+                                <a class="dropdown-item" role="presentation" href="panel/myads">
                                     Pokaż moje ogłoszenia
                                 </a>
-                                <a class="dropdown-item" role="presentation" href="/panel/add">
+                                <a class="dropdown-item" role="presentation" href="panel/add">
                                     Dodaj nowe ogłoszenie
                                 </a>
                             </div>
                         </li>
                         <c:if test="${sessionScope.user.admin}">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="/admin/users">Użytkownicy</a>
+                                <a class="nav-link" href="admin/users">Użytkownicy</a>
                             </li>
                         </c:if>
                     </ul>
                 </c:if>
                 <c:if test="${sessionScope.user == null}">
                 <span class="navbar-text actions ml-auto">
-                    <a href="/login" class="login align-middle">
+                    <a href="login" class="login align-middle">
                         Zaloguj
                     </a>
-                    <a class="btn btn-light action-button" role="button" href="/register">
+                    <a class="btn btn-light action-button" role="button" href="register">
                         Zarejestruj
                     </a>
                 </span>
@@ -383,7 +384,7 @@
                 <c:if test="${sessionScope.user != null}">
                     <span class="navbar-text actions">
                     <span class="navbar-text align-middle mr-2">Witaj, ${sessionScope.user.name}!</span>
-                    <a class="btn btn-outline-danger action-button" role="button" href="/logout">
+                    <a class="btn btn-outline-danger action-button" role="button" href="logout">
                         Wyloguj
                     </a>
                 </span>
