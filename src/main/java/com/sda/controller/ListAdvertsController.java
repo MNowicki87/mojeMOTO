@@ -1,5 +1,6 @@
 package com.sda.controller;
 
+import com.sda.request.FilterAdsRequest;
 import com.sda.service.AdvertService;
 
 import javax.servlet.ServletException;
@@ -21,22 +22,20 @@ public class ListAdvertsController extends HttpServlet {
       
       req.setAttribute("makeList", advertService.getAllMakes());
       
-      
       if (req.getParameterMap().isEmpty()) {
-         req.setAttribute("adsList", advertService.getAllAds());
+         req.setAttribute("adsMap", advertService.getAllAds());
       } else {
-         final String make = (String) req.getAttribute("make");
-         final int minPrice = (int) req.getAttribute("minPrice");
-         final int maxPrice = (int) req.getAttribute("maxPrice");
-         final int minYear = (int) req.getAttribute("minYear");
-         final int maxYear = (int) req.getAttribute("maxYear");
-         final int minMileage = (int) req.getAttribute("minMileage");
-         final int maxMileage = (int) req.getAttribute("maxMileage");
+         final FilterAdsRequest filterAdsRequest = FilterAdsRequest.builder()
+               .make((String) req.getAttribute("make"))
+               .minPrice((int) req.getAttribute("minPrice"))
+               .maxPrice((int) req.getAttribute("maxPrice"))
+               .minYear((int) req.getAttribute("minYear"))
+               .maxYear((int) req.getAttribute("maxYear"))
+               .minMileage((int) req.getAttribute("minMileage"))
+               .maxMileage((int) req.getAttribute("maxMileage"))
+               .build();
          
-         req.setAttribute("adsList", advertService.getFiltered(make,
-               minMileage, maxMileage,
-               minYear, maxYear,
-               minPrice, maxPrice));
+         req.setAttribute("adsMap", advertService.getFiltered(filterAdsRequest));
       }
       
       req.getRequestDispatcher("/list.jsp").forward(req, resp);

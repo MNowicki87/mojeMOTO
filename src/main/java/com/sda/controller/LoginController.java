@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet {
       
       if (loggedInUser) {
          req.getSession().setAttribute("user", user.get());
+         req.getSession().setAttribute("message", "Witaj " + user.get().getName() + "!");
          req.getRequestDispatcher("/home.jsp").forward(req, resp);
       } else {
          req.setAttribute("loginFailure", LOGIN_FAILED_MESSAGE);

@@ -39,8 +39,13 @@ public class UserService {
       return userRepository.findAll();
    }
    
-   public User getUserById(Integer id) {
+   public User getUserById(int id) {
       return userRepository.getUserById(id);
+   }
+   
+   public String getUserNameById(int id) {
+      final User user = getUserById(id);
+      return user.getName() + " " + user.getSurname();
    }
    
    public void editUser(EditUserRequest request) {
@@ -48,6 +53,9 @@ public class UserService {
       user.setName(request.getName());
       user.setSurname(request.getSurname());
    }
-
-
+   
+   
+   public void toggleUserActive(final int id) {
+      userRepository.toggleActive(id);
+   }
 }

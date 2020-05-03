@@ -2,17 +2,18 @@ package com.sda.service;
 
 import com.sda.model.Advert;
 import com.sda.repository.AdvertRepository;
+import com.sda.request.FilterAdsRequest;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class AdvertService {
-   
    private static AdvertService advertService;
-   
    private final AdvertRepository advertRepository;
+   final UserService userService = UserService.getInstance();
    
    public static AdvertService getInstance() {
       if (advertService == null) {
@@ -21,8 +22,8 @@ public class AdvertService {
       return advertService;
    }
    
-   public List<Advert> getAllAds() {
-      return getPremiumAdsFirst(advertRepository.getAll());
+   public Map<Advert, String> getAllAds() {
+      return getAdsMapWithUserName(getPremiumAdsFirst(advertRepository.getAll()));
    }
    
    private List<Advert> getPremiumAdsFirst(final List<Advert> adList) {
@@ -38,36 +39,39 @@ public class AdvertService {
       return advertRepository.getAll().stream().map(ad -> ad.getCar().getMake()).sorted().collect(Collectors.toList());
    }
    
-   public List<Advert> getAdsByUser(String login) {
-      return advertRepository.getAdsByUser(login);
+   public List<Advert> getAdsByUser(int userId) {
+      return advertRepository.getAdsByUser(userId);
    }
    
-   public boolean addListing(final Advert ad) {
-      return advertRepository.addAdvert(ad);
+   public void addListing(final Advert ad) {
+      advertRepository.addAdvert(ad);
    }
    
    public void depopulateData() {
       advertRepository.drop();
    }
    
-   public List<Advert> getFiltered(final String make,
-                                   final int minMileage, final int maxMileage,
-                                   final int minYear, final int maxYear,
-                                   final int minPrice, final int maxPrice) {
+   public Map<Advert, String> getFiltered(FilterAdsRequest req) {
       List<Advert> filtered;
-      if (!getAllMakes().contains(make)) {
-         filtered = advertRepository.getFiltered(minMileage, maxMileage,
-               minYear, maxYear,
-               minPrice, maxPrice);
+      if (!getAllMakes().contains(req.getMake())) {
+         filtered = advertRepository.getFiltered(req.getMinMileage(), req.getMaxMileage(),
+               req.getMinYear(), req.getMaxYear(),
+               req.getMinPrice(), req.getMaxPrice());
       } else {
-         filtered = advertRepository.getFiltered(make,
-               minMileage, maxMileage,
-               minYear, maxYear,
-               minPrice, maxPrice);
+         filtered = advertRepository.getFiltered(req.getMake(),
+               req.getMinMileage(), req.getMaxMileage(),
+               req.getMinYear(), req.getMaxYear(),
+               req.getMinPrice(), req.getMaxPrice());
       }
       
-      return getPremiumAdsFirst(filtered);
-      
+      return getAdsMapWithUserName(filtered);
+
+//      return getPremiumAdsFirst(filtered);
+   }
+   
+   private Map<Advert, String> getAdsMapWithUserName(final List<Advert> filtered) {
+      return filtered.stream()
+            .collect(Collectors.toMap(advert -> advert, advert -> userService.getUserNameById(advert.getUserId())));
    }
    
 }

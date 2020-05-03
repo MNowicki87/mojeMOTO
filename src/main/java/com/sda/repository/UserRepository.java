@@ -1,6 +1,7 @@
 package com.sda.repository;
 
 import com.sda.model.User;
+import com.sda.model.UserRole;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -61,7 +62,7 @@ public class UserRepository {
             .login(USR1)
             .password(PWD)
             .email("nowicki.pl@gmail.com")
-            .isAdmin(false)
+            .userRole(UserRole.USER)
             .isActive(true)
             .build();
       
@@ -70,7 +71,7 @@ public class UserRepository {
             .surname("Kowalski")
             .login(USR2)
             .password(PWD)
-            .isAdmin(false)
+            .userRole(UserRole.USER)
             .isActive(true)
             .build();
    
@@ -80,16 +81,17 @@ public class UserRepository {
             .login("admin")
             .password("admin")
             .email("nowicki.pl@gmail.com")
-            .isAdmin(true)
+            .userRole(UserRole.ADMIN)
+            .isActive(true)
             .build();
    
       admin.setId(counter.getAndIncrement());
       mnow.setId(counter.getAndIncrement());
       jkow.setId(counter.getAndIncrement());
       
+      userRepository().users.add(admin);
       userRepository().users.add(mnow);
       userRepository().users.add(jkow);
-      userRepository().users.add(admin);
       
       userRepository().users.sort(Comparator.comparingInt(User::getId));
       
@@ -104,6 +106,11 @@ public class UserRepository {
             .filter(usr-> usr.getId() == id)
             .findFirst()
             .get();
+   }
+   
+   public void toggleActive(final int id) {
+      final User user = getUserById(id);
+      user.setActive(!user.isActive());
    }
 }
 

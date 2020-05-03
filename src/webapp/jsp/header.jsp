@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page language="java" %>
+<%@ page language="java" import="java.time.LocalDateTime" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>mojeMOTO</title>
-<%--    <base href="http://localhost:8080/">--%>
+    <base href="http://localhost:8080/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -47,7 +47,7 @@
                                 </a>
                             </div>
                         </li>
-                        <c:if test="${sessionScope.user.admin}">
+                        <c:if test="${sessionScope.user.userRole eq 'ADMIN'}">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="admin/users">Użytkownicy</a>
                             </li>
