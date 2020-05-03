@@ -10,8 +10,9 @@ import java.io.IOException;
 @WebServlet(name = "LogoutController", value = "/logout")
 public class LogoutController extends HttpServlet {
    @Override
-   protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-      httpServletRequest.getSession().invalidate();
-      httpServletRequest.getRequestDispatcher("/home").forward(httpServletRequest, httpServletResponse);
+   protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+      req.getSession().invalidate();
+      req.getSession().setAttribute("message", "Wylogowano!");
+      req.getRequestDispatcher("/").forward(req, resp);
    }
 }

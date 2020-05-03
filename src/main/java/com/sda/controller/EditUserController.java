@@ -18,24 +18,23 @@ public class EditUserController extends HttpServlet {
    
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       
-      Integer userId = Integer.valueOf(req.getParameter("userId"));
+      int userId = Integer.parseInt(req.getParameter("userId"));
       User user = userService.getUserById(userId);
       
       req.setAttribute("user", user);
-      
       req.getRequestDispatcher("/editUser.jsp").forward(req, resp);
    }
    
    
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
+   
       final int id = Integer.parseInt(request.getParameter("id"));
       final String name = request.getParameter("name");
       final String surname = request.getParameter("surname");
    
       EditUserRequest editUserRequest = new EditUserRequest(id, name, surname);
       userService.editUser(editUserRequest);
-      
+      request.getSession().setAttribute("message", "Pomyślnie zmodyfikowano dane użytkownika " + id);
       response.sendRedirect(request.getContextPath() + "/admin/users");
    }
    

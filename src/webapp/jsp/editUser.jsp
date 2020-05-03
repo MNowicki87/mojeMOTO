@@ -10,15 +10,13 @@
             <div class="form-group">
                 <label for="name">Imię:</label>
                 <input class="form-control" id="name" type="text" name="name" required
-                       value="${requestScope.user.name}" minlength="2">
+                       value="${requestScope.user.name}" placeholder="${requestScope.user.name}" minlength="2">
             </div>
             <div class="form-group">
                 <label for="surname">Nazwisko:</label>
                 <input class="form-control" id="surname" type="text" name="surname"
-                       value="${requestScope.user.surname}">
+                       value="${requestScope.user.surname}" placeholder="${requestScope.user.surname}">
             </div>
-            <input type="hidden" name="login" value="${requestScope.user.login}">
-            <input type="hidden" name="pwd" value="${requestScope.user.password}">
             <input type="hidden" name="id" value="${requestScope.user.id}">
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">

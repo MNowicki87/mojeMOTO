@@ -52,13 +52,13 @@ public class AdsQueryValidationFilter implements Filter {
          max = maxDefault;
          switch (paramName) {
             case "Price":
-               req.setAttribute("invalid"+paramName+"Param", "Nieprawidłowy zakres cen! Kryteria zingorowane.");
+               req.setAttribute("invalid" + paramName + "Param", "Nieprawidłowy zakres cen! Kryteria zingorowane.");
                break;
             case "Year":
-               req.setAttribute("invalid"+paramName+"Param", "Nieprawidłowe lata produkcji! Kryteria zingorowane.");
+               req.setAttribute("invalid" + paramName + "Param", "Nieprawidłowe lata produkcji! Kryteria zingorowane.");
                break;
             case "Mileage":
-               req.setAttribute("invalid"+paramName+"Param", "Nieprawidłowy zakres przebiegu! Kryteria zingorowane.");
+               req.setAttribute("invalid" + paramName + "Param", "Nieprawidłowy zakres przebiegu! Kryteria zingorowane.");
          }
       }
       

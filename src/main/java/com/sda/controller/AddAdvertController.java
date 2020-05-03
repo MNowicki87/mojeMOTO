@@ -29,7 +29,7 @@ public class AddAdvertController extends HttpServlet {
                          final HttpServletResponse resp) throws ServletException, IOException {
       Advert advert = buildAd(req);
       advertService.addListing(advert);
-//      req.getRequestDispatcher("/list.jsp").forward(req, resp);
+      req.getSession().setAttribute("message", "Dodano ogłoszenie");
       resp.sendRedirect(req.getContextPath()+"/panel/myads");
    }
    
@@ -37,14 +37,16 @@ public class AddAdvertController extends HttpServlet {
    
       final String premiumCheckbox = req.getParameter("premium");
       boolean isPremium = "on".equals(premiumCheckbox);
-      
+      final User user = (User) req.getSession().getAttribute("user");
+      final int userId = user.getId();
+   
       return Advert.builder()
             .car(buildCar(req))
             .price(Integer.parseInt(req.getParameter("price")))
             .createdAt(LocalDateTime.now())
             .isActive(true)
             .isPremium(isPremium)
-            .owner((User) req.getSession().getAttribute("user"))
+            .userId(userId)
             .build();
    }
    

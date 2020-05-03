@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 public class Advert {
    
    int price;
-   User owner;
+//   User owner;
+   int userId;
    Car car;
    LocalDateTime createdAt;
    boolean isActive;

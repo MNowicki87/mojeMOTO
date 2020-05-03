@@ -1,6 +1,7 @@
 package com.sda.filter;
 
 import com.sda.model.User;
+import com.sda.model.UserRole;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -24,7 +25,7 @@ public class AdminAuthenticationFilter implements Filter {
       
       if (user != null) {
          final User userObject = (User) user;
-         final boolean isAdmin = userObject.isAdmin();
+         final boolean isAdmin = userObject.getUserRole().equals(UserRole.ADMIN);
          if (isAdmin) {
             chain.doFilter(req, resp);
          }

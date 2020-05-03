@@ -26,9 +26,6 @@ public class AdvertRepository {
    }
    
    private static void addListings() {
-      final String USR1 = "usr1";
-      final String USR2 = "usr2";
-      final String PWD = "pwd";
       
       final UserService userService = UserService.getInstance();
       final Car mazda = Car.builder()
@@ -42,7 +39,7 @@ public class AdvertRepository {
             .car(mazda)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin(USR1, PWD).orElseThrow())
+            .userId(1)
             .price(3200)
             .build();
       advertRepository.addAdvert(ad1);
@@ -58,7 +55,7 @@ public class AdvertRepository {
             .car(merc)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin(USR2, PWD).orElseThrow())
+            .userId(2)
             .price(22900)
             .build();
       advertRepository.addAdvert(ad2);
@@ -74,7 +71,7 @@ public class AdvertRepository {
             .car(bimmer)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin(USR2, PWD).get())
+            .userId(2)
             .price(60000)
             .build();
       advertRepository.addAdvert(ad3);
@@ -90,7 +87,7 @@ public class AdvertRepository {
             .car(audi)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin(USR1, PWD).get())
+            .userId(2)
             .price(28900)
             .isPremium(true)
             .build();
@@ -107,7 +104,7 @@ public class AdvertRepository {
             .car(volvo)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin(USR2, PWD).get())
+            .userId(3)
             .price(230000)
             .build();
       advertRepository.addAdvert(ad5);
@@ -123,7 +120,7 @@ public class AdvertRepository {
             .car(seggy)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .owner(userService.getUserByLogin(USR1, PWD).get())
+            .userId(3)
             .price(18_000_000)
             .isPremium(true)
             .build();
@@ -134,10 +131,10 @@ public class AdvertRepository {
       return List.copyOf(adverts);
    }
    
-   public List<Advert> getAdsByUser(String userLogin) {
+   public List<Advert> getAdsByUser(int userId) {
       return adverts.stream()
             .filter(advert ->
-                  advert.getOwner().getLogin().equals(userLogin))
+                  advert.getUserId() == userId)
             .collect(Collectors.toList());
    }
    

@@ -24,17 +24,19 @@ public class RegisterController extends HttpServlet {
    
    
    @Override
-   protected void doPost(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
+   protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
       
-      User user = createUserFromForm(httpServletRequest);
+      User user = createUserFromForm(req);
       boolean created = userService.registerUser(user);
       if (created) {
-         httpServletRequest.getRequestDispatcher("login.jsp")
-               .forward(httpServletRequest, httpServletResponse);
+         req.getSession().setAttribute("message", "Rejestracja przebiegła pomyślnie,\n" +
+               "Na podany adres email został przesłany link aktywacyjny.\n" +
+               "Aktywacja konta jest wymagana do uzyskania pełnej funkcjonalności.");
+         req.getRequestDispatcher("login.jsp").forward(req, resp);
       } else {
-         httpServletRequest.setAttribute("loginExists", user.getLogin());
-         httpServletRequest.getRequestDispatcher("register.jsp")
-               .forward(httpServletRequest, httpServletResponse);
+         req.setAttribute("loginExists", user.getLogin());
+         req.getRequestDispatcher("register.jsp")
+               .forward(req, resp);
       }
    }
    

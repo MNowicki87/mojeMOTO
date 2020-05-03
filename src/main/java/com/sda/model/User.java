@@ -16,7 +16,7 @@ public class User {
    String password;
    String email;
    List<Advert> observedAds;
-   boolean isAdmin;
+   UserRole userRole;
    boolean isActive;
    
 }
