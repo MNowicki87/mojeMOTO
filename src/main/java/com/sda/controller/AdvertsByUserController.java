@@ -14,7 +14,8 @@ import java.io.IOException;
 public class AdvertsByUserController extends HttpServlet {
    private static final AdvertService advertService = AdvertService.getInstance();
    @Override
-   protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
+   protected void doGet(final HttpServletRequest httpServletRequest,
+                        final HttpServletResponse httpServletResponse) throws ServletException, IOException {
       User user = (User) httpServletRequest.getSession().getAttribute("user");
       httpServletRequest.setAttribute("adsMap", advertService.getAdsByUser(user.getId()));
       httpServletRequest.setAttribute("myads", true);

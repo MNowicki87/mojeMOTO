@@ -50,8 +50,9 @@ public class AdvertService {
       return advertRepository.getAll().stream().map(ad -> ad.getCar().getMake()).sorted().collect(Collectors.toList());
    }
    
-   public List<Advert> getAdsByUser(int userId) {
-      return advertRepository.getAdsByUser(userId);
+   public Map<Advert, String> getAdsByUser(int userId) {
+      return getAdsMapWithUserName(
+            advertRepository.getAdsByUser(userId));
    }
    
    public void addListing(final Advert ad) {
