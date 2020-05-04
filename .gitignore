@@ -148,3 +148,6 @@ Temporary Items
 .apdisk
 
 # End of https://www.gitignore.io/api/java,macos,java-web,intellij
+src/main/webapp/
+src/test/
+src/webapp/jsp/WEB-INF/classes/com/sda/email/
