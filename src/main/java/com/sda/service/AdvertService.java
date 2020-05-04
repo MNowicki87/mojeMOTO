@@ -59,9 +59,9 @@ public class AdvertService {
       advertRepository.addAdvert(ad);
    }
    
-   public void depopulateData() {
-      advertRepository.drop();
-   }
+//   public void depopulateData() {
+//      advertRepository.drop();
+//   }
    
    public Map<Advert, String> getFiltered(FilterAdsRequest req) {
       List<Advert> filtered;
@@ -77,8 +77,6 @@ public class AdvertService {
       }
       
       return getPremiumAdsFirst(filtered);
-
-//      return getPremiumAdsFirst(filtered);
    }
    
 }
