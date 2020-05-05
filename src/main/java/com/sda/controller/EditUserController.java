@@ -31,6 +31,12 @@ public class EditUserController extends HttpServlet {
       final int id = Integer.parseInt(request.getParameter("id"));
       final String name = request.getParameter("name");
       final String surname = request.getParameter("surname");
+      System.out.printf(
+            "Edited user: { \n" +
+                  "\tid: %d,%n" +
+                  "\tName: '%s',%n" +
+                  "\tSurname: '%s'}",
+            id, name, surname);
    
       EditUserRequest editUserRequest = new EditUserRequest(id, name, surname);
       userService.editUser(editUserRequest);
