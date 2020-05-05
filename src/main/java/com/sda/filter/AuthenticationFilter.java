@@ -18,8 +18,8 @@ public class AuthenticationFilter implements Filter {
       final Object user = request.getSession().getAttribute("user");
       
       if (user == null) {
-         System.out.println("User is not logged in! Redirecting");
-         response.sendRedirect(request.getContextPath() + "login");
+         System.out.println("User is not logged in! Redirecting…");
+         response.sendRedirect("http://" + request.getServerName() + ":" + request.getServerPort() + "/login");
       } else {
          chain.doFilter(req, resp);
       }
