@@ -48,8 +48,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-lg-10 col-md-8">
                 <button class="btn btn-primary btn-block" type="submit">Filtruj</button>
+            </div>
+            <div class="col">
+                <a class="btn btn-secondary btn-block" href="panel/list">Wyczyść filtry</a>
             </div>
         </div>
         <c:if test="${not empty requestScope.invalidPriceParam}">
