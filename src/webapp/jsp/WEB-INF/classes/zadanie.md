@@ -21,7 +21,6 @@
 
 
 
-
 - response.sendRedirect("/…) vs. requestDispatcher.forward(req, resp)
 - beany
 - listenery

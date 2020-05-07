@@ -37,11 +37,14 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown"
                                aria-expanded="false">
-                                Moje ogłoszenia
+                                Moje ...
                             </a>
                             <div class="dropdown-menu" role="menu">
                                 <a class="dropdown-item" role="presentation" href="panel/myads">
                                     Pokaż moje ogłoszenia
+                                </a>
+                                <a class="dropdown-item" role="presentation" href="panel/observed">
+                                    Obserwowane ogłoszenia
                                 </a>
                                 <a class="dropdown-item" role="presentation" href="panel/add">
                                     Dodaj nowe ogłoszenie

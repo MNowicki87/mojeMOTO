@@ -46,6 +46,13 @@ public class AdvertService {
                   advert -> userService.getUserNameById(advert.getUserId())));
    }
    
+   public Map<Advert, String> getAdsObservedByUser(int userId) {
+      final List<Advert> advertList = advertRepository.getAll().stream()
+            .filter(ad -> ad.getObserversIds().contains(userId))
+            .collect(Collectors.toList());
+      return getAdsMapWithUserName(advertList);
+   }
+   
    public List<String> getAllMakes() {
       return advertRepository.getAll().stream().map(ad -> ad.getCar().getMake()).sorted().collect(Collectors.toList());
    }
@@ -58,10 +65,6 @@ public class AdvertService {
    public void addListing(final Advert ad) {
       advertRepository.addAdvert(ad);
    }
-   
-//   public void depopulateData() {
-//      advertRepository.drop();
-//   }
    
    public Map<Advert, String> getFiltered(FilterAdsRequest req) {
       List<Advert> filtered;

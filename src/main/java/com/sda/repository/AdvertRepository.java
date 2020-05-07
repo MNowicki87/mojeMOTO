@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -16,6 +18,7 @@ public class AdvertRepository {
    
    private static AdvertRepository advertRepository;
    private final List<Advert> adverts;
+   private static final AtomicInteger counter = new AtomicInteger(1);
    
    public static AdvertRepository anAdvertRepository() {
       if (advertRepository == null) {
@@ -104,6 +107,7 @@ public class AdvertRepository {
             .car(volvo)
             .createdAt(LocalDateTime.now())
             .isActive(true)
+            .observersIds(Set.of(1,2,3))
             .userId(3)
             .price(230000)
             .build();
@@ -139,6 +143,7 @@ public class AdvertRepository {
    }
    
    public boolean addAdvert(Advert advert) {
+      advert.setId(counter.getAndIncrement());
       return adverts.add(advert);
    }
    

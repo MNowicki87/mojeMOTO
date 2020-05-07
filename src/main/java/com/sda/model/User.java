@@ -3,7 +3,7 @@ package com.sda.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
+import java.util.Set;
 
 @Builder
 @Data
@@ -15,7 +15,6 @@ public class User {
    String login;
    String password;
    String email;
-   List<Advert> observedAds;
    UserRole userRole;
    boolean isActive;
    
