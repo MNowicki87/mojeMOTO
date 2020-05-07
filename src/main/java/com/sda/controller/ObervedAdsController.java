@@ -24,8 +24,9 @@ public class ObervedAdsController extends HttpServlet {
    
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       final User user = (User) request.getSession().getAttribute("user");
-      final Map<Advert, String> adsMap = advertService.getAdsObservedByUser(user.getId());
       
+      
+      final Map<Advert, String> adsMap = advertService.getAdsObservedByUser(user.getId());
       request.setAttribute("adsMap", adsMap);
    
       request.getRequestDispatcher("/list.jsp").forward(request, response);

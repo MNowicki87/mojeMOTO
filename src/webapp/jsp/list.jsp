@@ -22,13 +22,21 @@
                     <img class="card-img-top w-100 d-block"
                          src="<c:out value="${entry.key.car.imageLink}"/>"
                          style="background-size: cover;" alt="${entry.key.car.toString()}">
-                    <c:if test="${entry.key.observersIds.contains(requestScope.user.id)}">
-                        <span class="badge badge-success position-absolute" style="top: -10px; right: -10px">
-                            <span class="material-icons">
-                                stars
+                    <a class="shadow-lg d-block" href="panel/list?toggleObservedId=${entry.key.id}">
+                            <span class="position-absolute badge
+                                    <c:if test="${entry.key.observersIds.contains(sessionScope.user.id)}">
+                                        badge-success text-white
+                                    </c:if>
+                                    <c:if test="${!entry.key.observersIds.contains(sessionScope.user.id)}">
+                                        badge-light text-secondary
+                                    </c:if>
+                                    "
+                                  style="top: -10px; left: -10px">
+                                <span class="material-icons">
+                                    star
+                                </span>
                             </span>
-                        </span>
-                    </c:if>
+                    </a>
 
                     <div class="card-body d-flex d-lg-flex flex-column flex-grow-1">
                         <div class="d-flex flex-row justify-content-between">

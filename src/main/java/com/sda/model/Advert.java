@@ -2,7 +2,6 @@ package com.sda.model;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Singular;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -19,9 +18,8 @@ public class Advert {
    LocalDateTime createdAt;
    boolean isActive;
    boolean isPremium;
-   @Singular(ignoreNullCollections = true)
-   Set<Integer> observersIds;
-   
+   @Builder.Default
+   Set<Integer> observersIds = new HashSet<>();
    
    
 }

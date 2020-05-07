@@ -276,9 +276,11 @@
     }
 
     .jumbo-inner-box {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 40px 6vw;
         color: #fff;
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
     }
 
     .jumbo-inner-box p {
@@ -313,12 +315,16 @@
         border-color: #1579f6;
     }
 
-
     .toast {
         /*opacity: 1;*/
         position: fixed;
         bottom: 20px;
         right: 20px;
+    }
+
+    .card.premium-ad-card {
+        background-color: azure;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     }
 
 </style>

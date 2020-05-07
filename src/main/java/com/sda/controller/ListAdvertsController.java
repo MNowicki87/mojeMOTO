@@ -1,7 +1,9 @@
 package com.sda.controller;
 
+import com.sda.model.User;
 import com.sda.request.FilterAdsRequest;
 import com.sda.service.AdvertService;
+import org.apache.http.HttpHeaders;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +24,18 @@ public class ListAdvertsController extends HttpServlet {
       
       req.setAttribute("makeList", advertService.getAllMakes());
       
+      final String toggleObservedId = req.getParameter("toggleObservedId");
+      
       if (req.getParameterMap().isEmpty()) {
          req.setAttribute("adsMap", advertService.getAllAds());
+         
+      } else if (toggleObservedId != null) {
+         final User user = (User) req.getSession().getAttribute("user");
+         advertService.toggleObserveAd(Integer.parseInt(toggleObservedId), user.getId());
+         final String refererUrl = req.getHeader(HttpHeaders.REFERER);
+         resp.sendRedirect(refererUrl);
+         return;
+         
       } else {
          final FilterAdsRequest filterAdsRequest = FilterAdsRequest.builder()
                .make((String) req.getAttribute("make"))
@@ -36,6 +48,7 @@ public class ListAdvertsController extends HttpServlet {
                .build();
          
          req.setAttribute("adsMap", advertService.getFiltered(filterAdsRequest));
+         
       }
       
       req.getRequestDispatcher("/list.jsp").forward(req, resp);

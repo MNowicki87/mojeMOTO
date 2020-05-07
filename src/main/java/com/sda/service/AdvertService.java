@@ -82,4 +82,21 @@ public class AdvertService {
       return getPremiumAdsFirst(filtered);
    }
    
+   public void toggleObserveAd(final int adId, final int userId) {
+      if (isAdObservedByUser(adId, userId)) {
+         advertRepository.removeObserver(adId, userId);
+         System.out.println("unobserved");
+      } else {
+         advertRepository.addObserver(adId, userId);
+         System.out.println("observed");
+      }
+   }
+   
+   private boolean isAdObservedByUser(final int adId, final int userId) {
+      return getAdById(adId).getObserversIds().contains(userId);
+   }
+   
+   private Advert getAdById(final int adId) {
+      return advertRepository.getAdById(adId);
+   }
 }

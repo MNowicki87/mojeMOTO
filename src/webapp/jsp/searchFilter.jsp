@@ -8,7 +8,7 @@
                 <select type="select" class="form-control form-control-lg" name="make" id="make" size="1">
                     <option value="any">Wybierz markę…</option>
                     <c:forEach items="${makeList}" var="make">
-                        <option value="${make}">${make}</option>
+                        <option value="${make}" <c:if test="${make eq param.make}">selected</c:if>>${make}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -16,8 +16,10 @@
                 <label>Cena:</label>
                 <div class="d-flex flex-row">
                     <input class="w-50" type="number" placeholder="od" name="minPrice" min="0"
+                           value="${param.minPrice}"
                            max="${Integer.MAX_VALUE}" maxlength="8" size="9">
                     <input class="w-50" type="number" placeholder="do" name="maxPrice"
+                           value="${param.maxPrice}"
                            min="0" max="${Integer.MAX_VALUE}" maxlength="8" size="9">
                 </div>
             </div>
@@ -25,8 +27,10 @@
                 <label class="d-block">Rok produkcji:</label>
                 <div class="d-flex flex-row">
                     <input class="w-50" type="number" placeholder="od" name="minYear"
+                           value="${param.minYear}"
                            min="1900" max="${LocalDateTime.now().getYear()+1}" maxlength="4" size="4">
                     <input class="w-50" type="number" placeholder="do" name="maxYear"
+                           value="${param.maxYear}"
                            min="1900" max="${LocalDateTime.now().getYear()+1}" maxlength="4" size="4">
                 </div>
             </div>
@@ -34,9 +38,11 @@
                 <label class="d-block">Przebieg:</label>
                 <div class="d-flex flex-row">
                     <input class="w-50" type="number" placeholder="od" name="minMileage"
+                           value="${param.minMileage}"
                            min="0" max="${Integer.MAX_VALUE}" maxlength="7"
                            size="7">
                     <input class="w-50" type="number" placeholder="do" name="maxMileage" min="0"
+                           value="${param.maxMileage}"
                            max="${Integer.MAX_VALUE}" maxlength="7" size="7">
                 </div>
             </div>

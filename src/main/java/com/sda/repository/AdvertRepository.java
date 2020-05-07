@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,9 +17,9 @@ import java.util.stream.Collectors;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class AdvertRepository {
    
+   private static final AtomicInteger counter = new AtomicInteger(1);
    private static AdvertRepository advertRepository;
    private final List<Advert> adverts;
-   private static final AtomicInteger counter = new AtomicInteger(1);
    
    public static AdvertRepository anAdvertRepository() {
       if (advertRepository == null) {
@@ -29,7 +30,10 @@ public class AdvertRepository {
    }
    
    private static void addListings() {
-      
+      Set<Integer> observers = new HashSet<>();
+      observers.add(1);
+      observers.add(2);
+   
       final UserService userService = UserService.getInstance();
       final Car mazda = Car.builder()
             .make("Mazda")
@@ -43,6 +47,7 @@ public class AdvertRepository {
             .createdAt(LocalDateTime.now())
             .isActive(true)
             .userId(1)
+            .observersIds(observers)
             .price(3200)
             .build();
       advertRepository.addAdvert(ad1);
@@ -107,7 +112,6 @@ public class AdvertRepository {
             .car(volvo)
             .createdAt(LocalDateTime.now())
             .isActive(true)
-            .observersIds(Set.of(1,2,3))
             .userId(3)
             .price(230000)
             .build();
@@ -176,4 +180,21 @@ public class AdvertRepository {
             .collect(Collectors.toList());
    }
    
+   public Advert getAdById(final int adId) {
+      for (int i = 0; i < adverts.size(); i++) {
+         final Advert ad = adverts.get(i);
+         if (ad.getId() == adId) {
+            return ad;
+         }
+      }
+      return null;
+   }
+   
+   public void addObserver(final int adId, final int userId) {
+      getAdById(adId).getObserversIds().add(userId);
+   }
+   
+   public void removeObserver(final int adId, final int userId) {
+      getAdById(adId).getObserversIds().remove(userId);
+   }
 }
