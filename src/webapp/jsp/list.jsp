@@ -22,7 +22,7 @@
                     <img class="card-img-top w-100 d-block"
                          src="<c:out value="${entry.key.car.imageLink}"/>"
                          style="background-size: cover;" alt="${entry.key.car.toString()}">
-                    <a class="shadow-lg d-block" href="panel/list?toggleObservedId=${entry.key.id}">
+                    <a class="shadow-lg d-block observed-btn" href="panel/list?toggleObservedId=${entry.key.id}">
                             <span class="position-absolute badge
                                     <c:if test="${entry.key.observersIds.contains(sessionScope.user.id)}">
                                         badge-success text-white
@@ -36,6 +36,7 @@
                                     star
                                 </span>
                             </span>
+                        <span class="tooltiptext">Przełącz obserwowane</span>
                     </a>
 
                     <div class="card-body d-flex d-lg-flex flex-column flex-grow-1">

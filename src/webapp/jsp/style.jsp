@@ -276,11 +276,26 @@
     }
 
     .jumbo-inner-box {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(55, 155, 155, 0.1);
         padding: 40px 6vw;
         color: #fff;
         border-radius: 15px;
         backdrop-filter: blur(5px);
+        filter: drop-shadow(3px 9px 9px black);
+        box-shadow: 3px 9px 9px rgba(0,0,0,0.1);
+    }
+    .jumbo-inner-box::before {
+        content: " ";
+        overflow: hidden;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 15px;
+        border-top-left-radius: 250px 100px;
+        background: -webkit-linear-gradient(top left, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.05) 20%);
     }
 
     .jumbo-inner-box p {
@@ -311,7 +326,8 @@
     .custom-switch .custom-control-label::after {
         border-color: #1579f6;
     }
-    .custom-control-label::before{
+
+    .custom-control-label::before {
         border-color: #1579f6;
     }
 
@@ -325,6 +341,42 @@
     .card.premium-ad-card {
         background-color: azure;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .observed-btn {
+        position: relative;
+        top: -165px;
+    }
+
+    .tooltiptext {
+        position: absolute;
+        display: block;
+        opacity: 0;
+        left: 0px;
+        top: -9px;
+        padding: 6px;
+        line-height: 100%;
+        background-color: var(--light);
+        border-radius: 5px;
+        transition: 300ms;
+        box-shadow: 3px 3px 5px 0px rgba(0,0,0,.6);
+    }
+
+    .tooltiptext::after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        right: 99%;
+        margin-top: -10px;
+        border-width: 11px;
+        border-style: solid;
+        border-color: transparent var(--light) transparent transparent;
+    }
+
+    .observed-btn:hover
+    .tooltiptext {
+        left: 33px;
+        opacity: .8;
     }
 
 </style>
